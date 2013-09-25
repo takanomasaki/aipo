@@ -20,7 +20,7 @@
 ## ---------------------------------------------------------------------------
 
 ## ---------------------------------------------------------------------------
-
+#AUIcontentsAreaHeader()
 <div class="auiSummaryMeta clearfix">
 <div class="floatRight">
 #set($dlLink = $!utils.escapeXML($!jslink.getPortletById($!portlet.ID).addQueryData('template','AccountPersonFormScreen')) )
@@ -31,21 +31,21 @@
 #ALajaxlistformheader($l10n.ACCOUNT_USER)
 #ALtableheaderWide()
 #ALtdcaption($l10n.ACCOUNT_USER_NAME)
-#ALtditem($!result.Detail.UserName)
+#ALtditem($!result.Detail.WbrUserName)
 #ALtdcaption($l10n.ACCOUNT_USER_NAME)
-#ALtditem($!result.Detail.Name)
+#ALtditem($!result.Detail.WbrName)
 #ALtdcaption($l10n.ACCOUNT_USER_NAME_KANA)
-#ALtditem($!result.Detail.NameKana)
+#ALtditem($!result.Detail.WbrNameKana)
 #ALtdcaption($l10n.ACCOUNT_USER_EMAIL)
-#ALtditem($!result.Detail.Email)
+#ALtditem($!result.Detail.WbrEmail)
 #ALtdcaption($l10n.ACCOUNT_OUT_TELEPHONE)
-#ALtditem($!result.Detail.OutTelephone)
+#ALtditem($!result.Detail.WbrOutTelephone)
 #ALtdcaption($l10n.ACCOUNT_IN_TELEPHONE)
-#ALtditem($!result.Detail.InTelephone)
+#ALtditem($!result.Detail.WbrInTelephone)
 #ALtdcaption($l10n.ACCOUNT_USER_CELLULAR_PHONE)
-#ALtditem($!result.Detail.CellularPhone)
+#ALtditem($!result.Detail.WbrCellularPhone)
 #ALtdcaption($l10n.ACCOUNT_USER_CELLULAR_MAIL)
-#ALtditem($!result.Detail.CellularMail)
+#ALtditem($!result.Detail.WbrCellularMail)
 #ALtdcaption($l10n.ACCOUNT_USER_PHOTO)
 #ALtditemheader()
 #if($!{result.Detail.hasPhoto()})
@@ -56,29 +56,31 @@ $l10n.ACCOUNT_USER_NOT_CREATE
 #ALtditemfooter()
 #ALtdcaption($l10n.ACCOUNT_POST)
 #ALtditemheader()
-#foreach($record in $!result.Detail.getPostNameList())
+#foreach($record in $!result.Detail.getWbrPostNameList())
 #set($n = $velocityCount - 1)
 ##<a href="javascript:void(0);" onclick="aipo.common.showDialog('$!utils.escapeXML($!jslink.getPortletById($!portlet.ID).addQueryData('template','AccountPersonPostDetailScreen').addQueryData('entityid',$!result.Detail.getPostID($!n)))');" style="display:block;">$!record</a>
 <span style="display:block;">$!record</span>
 #end
 #ALtditemfooter()
 #ALtdcaption($l10n.ACCOUNT_POSITION)
-#ALtditem($!result.Detail.PositionName)
+#ALtditem($!result.Detail.WbrPositionName)
 #ALtablefooter()
 #ALformfooter()
 
 <h3>$l10n.ACCOUNT_COMPANY_INFO</h3>
 #ALtableheaderWide()
 #ALtdcaption($l10n.ACCOUNT_COMPANY_NAME)
-#ALtditem($!result.Detail.CompanyName)
+#ALtditem($!result.Detail.WbrCompanyName)
 #ALtdcaption($l10n.ACCOUNT_ZIPCODE)
 #ALtditemheader()
-#if($!result.Detail.CompanyZipcode.toString() != "")$l10n.ACCOUNT_POST_SIGN#end $!result.Detail.CompanyZipcode
+#if($!result.Detail.CompanyZipcode.toString() != "")$l10n.ACCOUNT_POST_SIGN#end $!result.Detail.WbrCompanyZipcode
 #ALtditemfooter()
 #ALtdcaption($l10n.ACCOUNT_ADDRESS)
-#ALtditem($!result.Detail.CompanyAddress)
+#ALtditem($!result.Detail.WbrCompanyAddress)
 #ALtdcaption($l10n.ACCOUNT_TELEPHONE)
-#ALtditem($!result.Detail.CompanyTelephone)
+#ALtditem($!result.Detail.WbrCompanyTelephone)
 #ALtdcaption($l10n.ACCOUNT_FAX_NUMBER)
-#ALtditem($!result.Detail.CompanyFaxNumber)
+#ALtditem($!result.Detail.WbrCompanyFaxNumber)
 #ALtablefooter()
+#AUIcontentsAreaFooter()
+#ALPersonalPreferenceWidget()

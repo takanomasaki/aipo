@@ -27,13 +27,8 @@
 
 //]]>
 </script>
-
-#if(${client}=="IPHONE")
 #ALcontentheader($!portlet.Title '')
 #parse("/portlets/html/ja/ajax-mygroup.vm")
 #parse("/portlets/html/ja/mygroup-menu.vm")
+#ALPersonalPreferenceWidget()
 #ALcontentfooter()
-#else
-#parse("/portlets/html/ja/ajax-mygroup.vm")
-#parse("/portlets/html/ja/mygroup-menu.vm")
-#end

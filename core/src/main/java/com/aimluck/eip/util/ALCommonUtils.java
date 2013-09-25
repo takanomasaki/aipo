@@ -368,6 +368,65 @@ public class ALCommonUtils {
 
   /**
    * 指定したエントリー名を持つ個人設定ページに含まれるポートレットへの URI を取得する．
+   * (getPortletURIinPersonalConfigPaneで最大化表示が上手くいかないため追加)
+   * 
+   * @param rundata
+   * @param portletEntryName
+   *          PSML ファイルに記述されているタグ entry の要素 parent
+   * @return
+   */
+  public static DynamicURI getPortletURIinPersonalConfigPaneMaximize(
+      RunData rundata, String portletEntryName) {
+    try {
+      Portlets portlets =
+        ((JetspeedRunData) rundata).getProfile().getDocument().getPortlets();
+      if (portlets == null) {
+        return null;
+      }
+
+      Portlets[] portletList = portlets.getPortletsArray();
+      if (portletList == null) {
+        return null;
+      }
+
+      int length = portletList.length;
+      for (int i = 0; i < length; i++) {
+        Entry[] entries = portletList[i].getEntriesArray();
+        if (entries == null || entries.length <= 0) {
+          continue;
+        }
+
+        int ent_length = entries.length;
+        for (int j = 0; j < ent_length; j++) {
+          if (entries[j].getParent().equals(portletEntryName)) {
+            JetspeedLink jsLink = JetspeedLinkFactory.getInstance(rundata);
+
+            DynamicURI duri =
+              jsLink.getLink(
+                JetspeedLink.CURRENT,
+                null,
+                null,
+                JetspeedLink.CURRENT,
+                null);
+            duri =
+              duri.addPathInfo(
+                JetspeedResources.PATH_PANEID_KEY,
+                portletList[i].getId()).addPathInfo(
+                JetspeedResources.PATH_PORTLETID_KEY,
+                entries[j].getId());
+            return duri;
+          }
+        }
+      }
+    } catch (Exception ex) {
+      logger.error("ALCommonUtils.getPortletURIinPersonalConfigPane", ex);
+      return null;
+    }
+    return null;
+  }
+
+  /**
+   * 指定したエントリー名を持つ個人設定ページに含まれるポートレットへの URI を取得する．
    * 
    * @param rundata
    * @param portletEntryName

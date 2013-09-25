@@ -21,6 +21,7 @@
 #set($tabs = [["簡易アクセス情報", "",""]])
 #set ($indicator_id = "indicator-dlg-")
 ## ---------------------------------------------------------------------------
+#AUIcontentsAreaHeader()
 #ALerrmsg($errmsgs)
 #ALajaxIndicator("${indicator_id}" "$!portlet.ID" "")
 #if($finishedSendmail)
@@ -46,3 +47,5 @@ ${alias}サイトのアドレス
 ${alias}サイトのアドレスを携帯電話に#ALsubmit('eventSubmit_doCellular_sendmail' 'メールする')
 #ALbuttonfooterRight()
 </form>
+#AUIcontentsAreaFooter()
+#ALPersonalPreferenceWidget()

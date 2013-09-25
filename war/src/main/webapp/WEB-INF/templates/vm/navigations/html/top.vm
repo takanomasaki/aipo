@@ -48,9 +48,9 @@
 		<div class="menubar body-child" id="menubar_hdSetting" style="position: absolute; display:none;">
 		<ul>
 			#if ($data.User.getUserName()!="admin")
-			<li><a href="$!utils.escapeXML($!utils.getPortletURIinPersonalConfigPane($data,'AccountPerson').addQueryData('action','controls.Restore'))">$l10n.PERSONAL</a></li>
+			<li><a href="$!utils.escapeXML($!utils.getPortletURIinPersonalConfigPane($data,'AccountPerson').addQueryData('action','controls.Maximize'))">$l10n.PERSONAL</a></li>
 			#if ($data.User.isAdmin())
-				<li><a href="$!utils.escapeXML($!utils.getPortletURIinPersonalConfigPane($data,'SysInfo').addQueryData('action','controls.Restore'))">$l10n.TOP_MANAGE_SETTING</a></li>
+				<li><a href="$!utils.escapeXML($!utils.getPortletURIinPersonalConfigPane($data,'SysInfo').addQueryData('action','controls.Maximize'))">$l10n.TOP_MANAGE_SETTING</a></li>
 			#end
 			#end
 			<li class="last"><a href="javascript:void(0);" onclick="location.href='$jslink.setAction($config.getString("action.logout"))'">$l10n.TOP_LOGOUT</a></li>

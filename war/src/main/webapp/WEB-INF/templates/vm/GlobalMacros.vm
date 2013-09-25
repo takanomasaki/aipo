@@ -645,6 +645,26 @@ $item.get(0)
 				<div dojoType="aimluck:Contentpane" widgetId="widget_$!portlet.ID" id="portlet_$!portlet.ID">
 #end
 
+#macro(ALPersonalPreferenceWidget)
+	#ALPreferenceWidgetAbstract($accountMenus)
+#end
+#macro(ALSystemPreferenceWidget)
+	#ALPreferenceWidgetAbstract($systemMenus)
+#end
+#macro(ALPreferenceWidgetAbstract $menus)
+	<!-- auiWidgetsArea -->
+	<div id="auiWidgetsArea" #if("$!{clientVer}" == "4") style="position:static" #elseif("${client}" == "IPHONE") style="position:fixed" #end>
+		<div class="auiWidget clearfix">
+			<ul>
+			#foreach($menu in $menus)
+				<li#if ($menu.isSelected() == true) class="active"#end><a href="$!utils.escapeXML($menu.MaximizeLink)">$menu.Title</a></li>
+			#end
+			</ul>
+		</div>
+	</div>
+	<!-- /auiWidgetsArea -->
+#end
+
 #macro(ALActivity)
 <div id="activitycheckerContainer" class="dijitInline activitycheckerContainerstyle"><div id="activitychecker" class="activitycheckerstyle counter zero"></div><span class="mb_hide">$l10n.WIDGET_NOTICE</span></div>
 #end

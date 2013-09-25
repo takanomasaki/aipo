@@ -28,13 +28,9 @@
 
 //]]>
 </script>
-#if(${client}=="IPHONE")
 #ALcontentheader($!portlet.Title '')
 #parse("/portlets/html/ja/ajax-cellular.vm")
 #ALcontentfooter()
-#else
-#parse("/portlets/html/ja/ajax-cellular.vm")
-#end
 
 ##上部メニューを表示させない
 ##parse("/portlets/html/ja/cellular-menu.vm")

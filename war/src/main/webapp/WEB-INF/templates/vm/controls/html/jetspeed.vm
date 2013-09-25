@@ -280,10 +280,10 @@ function setWrapperHeight() {
                 <h2>$l10n.WAR_SET_UP</h2>
                 <ul>
                 	#if ($data.User.getUserName()!="admin")
-						<li><a href="$!utils.escapeXML($!utils.getPortletURIinPersonalConfigPane($data,'AccountPerson').addQueryData('action','controls.Maximize'))"><span class="icon"><i class="icon-cog"></i></span>$l10n.PERSONAL</a></li>
+						<li><a href="$!utils.escapeXML($!utils.getPortletURIinPersonalConfigPaneMaximize($data,'AccountPerson').addQueryData('action','controls.Maximize'))"><span class="icon"><i class="icon-cog"></i></span>$l10n.PERSONAL</a></li>
 					#end
 					#if ($data.User.isAdmin())
-						<li><a href="$!utils.escapeXML($!utils.getPortletURIinPersonalConfigPane($data,'SysInfo').addQueryData('action','controls.Maximize'))"><span class="icon"><i class="icon-cogs"></i></span>$l10n.TOP_MANAGE_SETTING</a></li>
+						<li><a href="$!utils.escapeXML($!utils.getPortletURIinPersonalConfigPaneMaximize($data,'SysInfo').addQueryData('action','controls.Maximize'))"><span class="icon"><i class="icon-cogs"></i></span>$l10n.TOP_MANAGE_SETTING</a></li>
 					#end
     					<li><a href="javascript:void(0)" onclick="location.href='$jslink.setAction("ALChangeToPC")'"><span class="icon"><i class="icon-desktop"></i></span>PC版表示へ変更</a></li>
     					<li><a href="javascript:void(0)" onclick="location.href='$jslink.setAction($config.getString("action.logout"))'"><span class="icon"><i class="icon-power-off"></i></span>$l10n.TOP_LOGOUT</a></li>
@@ -353,67 +353,6 @@ function setWrapperHeight() {
   <div class="roundMainWrapper">
 #AuiInformation($information_title $information_text $information_cookie_name $information_display)
 $portlet.getContent($data)
-  #set ($flag = false)
-  #if ($portlet.name=="AccountPerson")
-    #set ($flag = true)
-  #elseif($portlet.name=="MyGroup")
-   #set ($flag = true)
-  #elseif($portlet.name=="Cellular")
-    #set ($flag = true)
-  #end
-
-  #if ($flag)
-	<!-- auiWidgetsArea -->
-	<div id="auiWidgetsArea" #if("$!{clientVer}" == "4") style="position:static" #elseif("${client}" == "IPHONE") style="position:fixed" #end>
-	<div class="auiWidget clearfix">
-	<ul>
-	#foreach($menue in $accountMenues)
-	<li#if ($menue.isSelected() == true) class="selected"#end><a href="$!utils.escapeXML($menue.MaximizeLink)">$menue.Title</a></li>
-	#end
-	</ul>
-	</div>
-	</div>
-	<!-- /auiWidgetsArea -->
-  #end
-#set ($system = false)
-
-  #if ($portlet.name=="SysInfo")
-    #set ($system = true)
-  #elseif($portlet.name=="FileIO")
-   #set ($system = true)
-  #elseif($portlet.name=="Account")
-    #set ($system = true)
-   #elseif($portlet.name=="Post")
-    #set ($system = true)
-   #elseif($portlet.name=="Position")
-    #set ($system = true)
-   #elseif($portlet.name=="Facilities")
-    #set ($system = true)
-   #elseif($portlet.name=="GadgetsAdmin")
-    #set ($system = true)
-   #elseif($portlet.name=="WorkflowCategory")
-    #set ($system = true)
-   #elseif($portlet.name=="ExtTimecardSystem")
-    #set ($system = true)
-    #elseif($portlet.name=="AccessControl")
-    #set ($system = true)
-   #elseif($portlet.name=="Eventlog")
-    #set ($system = true)
-  #end
-  #if ($system)
-	<!-- auiWidgetsArea -->
-	<div id="auiWidgetsArea" #if("$!{clientVer}" == "4") style="position:static" #elseif("${client}" == "IPHONE") style="position:fixed" #end>
-	<div class="auiWidget clearfix">
-	<ul>
-	#foreach($menu in $systemMenus)
-	<li#if ($menu.isSelected() == true) class="selected"#end><a href="$!utils.escapeXML($menu.MaximizeLink)">$menu.Title</a></li>
-	#end
-	</ul>
-	</div>
-	</div>
-	<!-- /auiWidgetsArea -->
-  #end
-
   </div>
 </div>
 <!-- /MAIN OUTER  -->

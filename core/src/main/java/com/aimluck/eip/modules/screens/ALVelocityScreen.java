@@ -27,6 +27,7 @@ import java.util.Map;
 
 import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.apache.jetspeed.services.logging.JetspeedLogFactoryService;
 import org.apache.jetspeed.services.logging.JetspeedLogger;
@@ -40,6 +41,7 @@ import org.apache.velocity.context.Context;
 
 import com.aimluck.eip.common.ALEipConstants;
 import com.aimluck.eip.modules.actions.common.ALAction;
+import com.aimluck.eip.portal.controls.ALVelocityPortletControl.PortletTab;
 import com.aimluck.eip.services.orgutils.ALOrgUtilsService;
 import com.aimluck.eip.services.portal.ALPortalApplicationService;
 import com.aimluck.eip.util.ALCommonUtils;
@@ -226,6 +228,15 @@ public abstract class ALVelocityScreen extends RawScreen implements ALAction {
     context.put("config", new JetspeedResources());
     context.put("utils", new ALCommonUtils());
     context.put("l10n", ALLocalizationUtils.createLocalization(rundata));
+    {
+      HttpSession session = rundata.getSession();
+      List<PortletTab> accountMenus =
+        (List<PortletTab>) session.getAttribute("accountMenus");
+      List<PortletTab> systemMenus =
+        (List<PortletTab>) session.getAttribute("systemMenus");
+      context.put("accountMenus", accountMenus);
+      context.put("systemMenus", systemMenus);
+    }
     // For security
     context.put(ALEipConstants.SECURE_ID, rundata.getUser().getTemp(
       ALEipConstants.SECURE_ID));

@@ -23,6 +23,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpSession;
+
 import org.apache.jetspeed.modules.actions.portlets.VelocityPortletAction;
 import org.apache.jetspeed.portal.PortletInstance;
 import org.apache.jetspeed.portal.portlets.GenericMVCPortlet;
@@ -34,6 +36,7 @@ import org.apache.turbine.util.RunData;
 import org.apache.velocity.context.Context;
 
 import com.aimluck.eip.common.ALEipConstants;
+import com.aimluck.eip.portal.controls.ALVelocityPortletControl.PortletTab;
 import com.aimluck.eip.services.orgutils.ALOrgUtilsService;
 import com.aimluck.eip.services.portal.ALPortalApplicationService;
 import com.aimluck.eip.util.ALCommonUtils;
@@ -157,6 +160,16 @@ public abstract class ALBaseAction extends VelocityPortletAction implements
       context,
       ALEipConstants.ENTITY_ID));
     context.put("utils", new ALCommonUtils());
+
+    {
+      HttpSession session = rundata.getSession();
+      List<PortletTab> accountMenus =
+        (List<PortletTab>) session.getAttribute("accountMenus");
+      List<PortletTab> systemMenus =
+        (List<PortletTab>) session.getAttribute("systemMenus");
+      context.put("accountMenus", accountMenus);
+      context.put("systemMenus", systemMenus);
+    }
 
     Map<String, String> attribute = ALOrgUtilsService.getParameters();
     for (Map.Entry<String, String> e : attribute.entrySet()) {

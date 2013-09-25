@@ -81,24 +81,24 @@ import com.aimluck.eip.util.ALEipUtils;
 
 /**
  * A Velocity based portlet control which implements all PortletState action
- * 
+ *
  * <p>
  * To use this control you need to define in your registry the following entry
  * or similar:
  * </p>
- * 
+ *
  * <pre>
- * 
- * 
- * 
- * 
- * 
- * 
- * 
- * 
- * 
- * 
- * 
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
  *              &lt;portlet-control-entry name=&quot;TitlePortletControl&quot;&gt;
  *                &lt;classname&gt;org.apache.jetspeed.portal.controls.VelocityPortletControl&lt;/classname&gt;
  *                &lt;parameter name=&quot;theme&quot; value=&quot;default.vm&quot;/&gt;
@@ -109,26 +109,26 @@ import com.aimluck.eip.util.ALEipUtils;
  *                &lt;/meta-info&gt;
  *                &lt;media-type ref=&quot;html&quot;/&gt;
  *              &lt;/portlet-control-entry&gt;
- * 
- * 
- * 
- * 
- * 
- * 
- * 
- * 
- * 
- * 
- * 
- * 
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
  * </pre>
- * 
- * 
+ *
+ *
  * @author <a href="mailto:re_carrasco@bco011.sonda.cl">Roberto Carrasco </a>
  * @author <a href="mailto:raphael@apache.org">Rapha�l Luta </a>
  * @author <a href="mailto:morciuch@apache.org">Mark Orciuch </a>
- * 
- * 
+ *
+ *
  */
 public class ALVelocityPortletControl extends AbstractPortletControl {
 
@@ -195,6 +195,7 @@ public class ALVelocityPortletControl extends AbstractPortletControl {
     context.put("skin", portlet.getPortletConfig().getPortletSkin());
     context.put("utils", new ALCommonUtils());
     context.put("theme", ALOrgUtilsService.getTheme());
+
     try {
       context.put("runs", getPortletList(rundata));
     } catch (NullPointerException e) {
@@ -302,18 +303,19 @@ public class ALVelocityPortletControl extends AbstractPortletControl {
         }
 
         context.put("tabs", tabs);
-        List<PortletTab> menues = getMenus(portlets, rundata, context);
-        context.put("menus", menues);
+        List<PortletTab> menus = getMenus(portlets, rundata, context);
+        context.put("menus", menus);
         int gadgetCounts = 0;
-        for (PortletTab tab : menues) {
+        for (PortletTab tab : menus) {
           if ("GadgetsTemplate".equals(tab.getName().toString())) {
             gadgetCounts++;
           }
         }
         context.put("gadgetCounts", gadgetCounts);
-        context.put("accountMenues", getAccountMenues(menues));
-        context.put("systemMenus", getSystemMenus(menues));
-
+        rundata.getSession().setAttribute(
+          "accountMenus",
+          getAccountMenus(menus));
+        rundata.getSession().setAttribute("systemMenus", getSystemMenus(menus));
         String mypageId = "";
         for (Portlets p : portlets.getPortletsArray()) {
           if ("マイページ".equals(p.getTitle())) {
@@ -346,7 +348,7 @@ public class ALVelocityPortletControl extends AbstractPortletControl {
   /**
    * This method allows subclasses of the VelocityPortletControl to populate the
    * context of this control before rendering by the template engine.
-   * 
+   *
    * @param rundata
    *          the RunData object for this request
    * @param context
@@ -359,7 +361,7 @@ public class ALVelocityPortletControl extends AbstractPortletControl {
   /**
    * Builds a list of possible window actions for this portlet instance. For
    * best results, the portlet should also implement the PortletState interface.
-   * 
+   *
    * @param rundata
    *          the request RunData
    * @param the
@@ -482,7 +484,7 @@ public class ALVelocityPortletControl extends AbstractPortletControl {
   // 修正 ：ノーマル表示時のポートレットの右上にメニューを配置できるように，
   // メソッド buildFunctionList を追加した．
   /**
-   * 
+   *
    * @param rundata
    * @param portlet
    * @return
@@ -550,7 +552,7 @@ public class ALVelocityPortletControl extends AbstractPortletControl {
 
     /**
      * Constructor
-     * 
+     *
      * @param name
      *          Name of the action
      * @param alt
@@ -581,42 +583,42 @@ public class ALVelocityPortletControl extends AbstractPortletControl {
 
   private List<PortletTab> getSystemMenus(List<PortletTab> tabs) {
 
-    PortletTab[] systemMenues = new PortletTab[11];
+    PortletTab[] systemMenus = new PortletTab[11];
     ArrayList<PortletTab> arrayList = new ArrayList<PortletTab>();
 
     for (PortletTab tab : tabs) {
       if (tab.getName().toString().contains("SysInfo")) {
-        systemMenues[0] = tab;
+        systemMenus[0] = tab;
       } else if (tab.getName().toString().contains("FileIO")) {
-        systemMenues[1] = tab;
+        systemMenus[1] = tab;
       } else if (tab.getName().toString().contains("Account")) {
         if (!tab.getName().toString().equals("AccountPerson")) {
-          systemMenues[2] = tab;
+          systemMenus[2] = tab;
         }
       } else if (tab.getName().toString().equals("Post")) {
-        systemMenues[3] = tab;
+        systemMenus[3] = tab;
       } else if (tab.getName().toString().equals("Position")) {
-        systemMenues[4] = tab;
+        systemMenus[4] = tab;
       } else if (tab.getName().toString().equals("Facilities")) {
-        systemMenues[5] = tab;
+        systemMenus[5] = tab;
       } else if (tab.getName().toString().contains("GadgetsAdmin")) {
-        systemMenues[6] = tab;
+        systemMenus[6] = tab;
       } else if (tab.getName().toString().equals("WorkflowCategory")) {
-        systemMenues[7] = tab;
+        systemMenus[7] = tab;
       } else if (tab.getName().toString().equals("ExtTimecardSystem")) {
-        systemMenues[8] = tab;
+        systemMenus[8] = tab;
       } else if (tab.getName().toString().equals("AccessControl")) {
-        systemMenues[9] = tab;
+        systemMenus[9] = tab;
       } else if (tab.getName().toString().equals("Eventlog")) {
-        systemMenues[10] = tab;
+        systemMenus[10] = tab;
       }
 
     }
 
     // ワークフローがない場合
-    for (PortletTab menues : systemMenues) {
-      if (menues != null) {
-        arrayList.add(menues);
+    for (PortletTab menus : systemMenus) {
+      if (menus != null) {
+        arrayList.add(menus);
       }
     }
 
@@ -625,26 +627,28 @@ public class ALVelocityPortletControl extends AbstractPortletControl {
 
   /**
    * スマートフォン用：ユーザー情報タブのメニュー
-   * 
+   *
    * @param tabs
    * @return
    */
-  private List<PortletTab> getAccountMenues(List<PortletTab> tabs) {
-    PortletTab[] accountMenues = new PortletTab[2];
+  private List<PortletTab> getAccountMenus(List<PortletTab> tabs) {
+    PortletTab[] accountMenus = new PortletTab[3];
     for (PortletTab tab : tabs) {
       if (tab.getName().toString().equals("AccountPerson")) {
-        accountMenues[0] = tab;
+        accountMenus[0] = tab;
       } else if (tab.getName().toString().equals("MyGroup")) {
-        accountMenues[1] = tab;
+        accountMenus[1] = tab;
+      } else if (tab.getName().toString().equals("Cellular")) {
+        accountMenus[2] = tab;
       }
     }
 
-    return Arrays.asList(accountMenues);
+    return Arrays.asList(accountMenus);
   }
 
   /**
    * iphoneメニュー用にすべてのポートレットのリストを取り出す。
-   * 
+   *
    * @param portlets
    * @param rundata
    * @param context
@@ -733,7 +737,7 @@ public class ALVelocityPortletControl extends AbstractPortletControl {
    * 修正：ポートレットの最大化画面時にタブを表示するために， <br />
    * クラス org.apache.jetspeed.portal.controls.VelocityPortletSetControl <br />
    * のメソッドを元に修正を加えた．
-   * 
+   *
    * @param portlets
    * @param rundata
    * @param context
@@ -909,7 +913,7 @@ public class ALVelocityPortletControl extends AbstractPortletControl {
 
   /**
    * 修正 ：第二引数の PortletSet に第三引数のポートレットが含まれるかを検証する．
-   * 
+   *
    * @param rundata
    * @param portlets
    *          タブ内に配置された Portlet 群
@@ -939,7 +943,7 @@ public class ALVelocityPortletControl extends AbstractPortletControl {
 
   /**
    * 修正 ：第二引数で指定したポートレットの ID がタブの ID かどうかを検証する．
-   * 
+   *
    * @param rundata
    * @param peid
    * @return
@@ -964,7 +968,7 @@ public class ALVelocityPortletControl extends AbstractPortletControl {
    * 修正 ：ポートレットの最大化画面時にタブを表示するために， <br />
    * クラス org.apache.jetspeed.portal.controls.VelocityPortletSetControl <br />
    * のメソッドをコピーした．
-   * 
+   *
    * @param rundata
    * @param portlets
    * @return
@@ -1110,7 +1114,7 @@ public class ALVelocityPortletControl extends AbstractPortletControl {
       Serializable {
 
     /**
-     * 
+     *
      * @param o1
      * @param o2
      * @return
