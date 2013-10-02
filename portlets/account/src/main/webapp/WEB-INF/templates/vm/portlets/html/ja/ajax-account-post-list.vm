@@ -27,7 +27,7 @@
 #if($result.List.size() == 0)
 #AUIbuttonActionInBlankBox($l10n.ACCOUNT_POST_ADD "javascript:aipo.common.showDialog('$newUrl1','$!portlet.ID',$newAfterFunction1);")
 #else
-#AUIwideAreaHeader()
+#AUIcontentsAreaHeader()
 #AUISummaryDiv()
 #AUIbuttonAction($l10n.ACCOUNT_POST_ADD "javascript:aipo.common.showDialog('$newUrl1','$!portlet.ID',$newAfterFunction1);")
 #AUISummaryDivfooter()
@@ -68,4 +68,5 @@
 #AUISummaryDivfooter()
 #ALformfooter()
 #AUIcontentsAreaFooter()
+#ALSystemPreferenceWidget()
 #end

@@ -21,7 +21,7 @@
 
 #set ($addSystem = $!utils.escapeXML($!jslink.getPortletById($!portlet.ID).addQueryData("template","ExtTimecardSystemFormScreen").addQueryData("entityid","new")))
 ## ---------------------------------------------------------------------------
-#AUIwideAreaHeader()
+#AUIcontentsAreaHeader()
 #AUISummaryDiv()
 <div class="floatRight">
 <div class="auiSelectButton">

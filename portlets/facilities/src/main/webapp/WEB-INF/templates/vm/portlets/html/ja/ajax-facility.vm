@@ -22,7 +22,7 @@
 #set ($addFacility = $!utils.escapeXML($!jslink.getPortletById($!portlet.ID).addQueryData("template","FacilityFormScreen").addQueryData("entityid","new")))
 #set ($orderFacility = $!jslink.getPortletById($!portlet.ID).addQueryData("template","FacilityChangeTurnFormScreen"))
 ## ---------------------------------------------------------------------------
-#AUIwideAreaHeader()
+#AUIcontentsAreaHeader()
 #AUISummaryDiv()
 #if($result.getAllFacilitySum() != 0)
 <div class="floatLeft">
@@ -109,3 +109,4 @@ $result.getStringCR($!group.GroupName)
 #end
 #ALformfooter()
 #AUIcontentsAreaFooter()
+#ALSystemPreferenceWidget()

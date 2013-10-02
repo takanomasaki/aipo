@@ -25,7 +25,7 @@
 #set ($newUrl2 = $!utils.escapeXML($!jslink.getPortletById($!portlet.ID).addQueryData("template","WorkflowRouteFormScreen").addQueryData("entityid","new")))
 #set ($newAfterFunction2 = "aipo.workflow_route.onLoadWorkflowRouteDialog")
 ## ---------------------------------------------------------------------------
-#AUIwideAreaHeader()
+#AUIcontentsAreaHeader()
 #AUISummaryDiv()
 #if($result.List.size() > 0)
 <div class="floatLeft">
@@ -93,3 +93,4 @@
   #ALformfooter()
 #end
 #AUIcontentsAreaFooter()
+#ALSystemPreferenceWidget()

@@ -26,12 +26,6 @@
     aipo.account_company.menuSelected = 1;
 //]]>
 </script>
-#if(${client}=="IPHONE")
 #ALcontentheader($!portlet.Title '')
-#AUIcontentsAreaHeader()
-#end
 #parse("/portlets/html/ja/ajax-account-position-list.vm")
-#if(${client}=="IPHONE")
-#AUIcontentsAreaFooter()
 #ALcontentfooter()
-#end

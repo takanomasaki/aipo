@@ -22,7 +22,7 @@
 #set ($linkContainer = $!jslink.getPortletById($!portlet.ID).addQueryData('template','GadgetsContainerAdminFormScreen').addQueryData('entityid','edit'))
 #set ($linkPsml = $!jslink.getPortletById($!portlet.ID).addQueryData('template','GadgetsPsmlFormScreen'))
 ## ---------------------------------------------------------------------------
-#AUIwideAreaHeader()
+#AUIcontentsAreaHeader()
 
 #AUISummaryDiv()
 <div class="floatLeft">
@@ -122,3 +122,4 @@ $l10n.GADGETS_APP_NOT_EXIST_MSG<br />
 #ALformfooter()
 #end
 #AUIcontentsAreaFooter()
+#ALSystemPreferenceWidget()

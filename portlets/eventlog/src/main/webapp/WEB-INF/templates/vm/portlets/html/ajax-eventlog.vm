@@ -20,7 +20,7 @@
 ## ---------------------------------------------------------------------------
 #set ($baselink = "$!jslink.getPortletById($!portlet.ID).addQueryData('template','EventlogScreen')")
 ## ---------------------------------------------------------------------------
-#AUIwideAreaHeader()
+#AUIcontentsAreaHeader()
 <div id="listMessageDiv"></div>
 #ALajaxlistformheader($l10n.EVENTLOG)
 

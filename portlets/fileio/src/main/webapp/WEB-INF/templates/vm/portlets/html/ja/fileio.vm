@@ -21,9 +21,8 @@
 #set($tabs = [["$l10n.FILEIO_IMPORT_MANAGEMENT", "",""]])
 ## ---------------------------------------------------------------------------
 #ALtabheader($tabs "")
-#if(${client}=="IPHONE")
 #ALcontentheader($!portlet.Title '')
-#end
+
 <form name="io_select" action="" method="post" enctype="multipart/form-data">
 <input type="hidden" name="secid" value="$secid" />
 <select name="post$!{portlet.ID}" onChange="location.href=this.options[this.selectedIndex].value">
@@ -35,7 +34,5 @@
 </select>
 $l10n.FILEIO_PACKAGE_REGISTER
 </form>
-#if(${client}=="IPHONE")
 #ALcontentfooter()
-#end
 #ALtabfooter()
