@@ -657,7 +657,9 @@ $item.get(0)
 		<div class="auiWidget clearfix">
 			<ul>
 			#foreach($menu in $menus)
+				#if(!(${client} == "IPHONE" && "${menu.Name}"=="Cellular"))
 				<li#if ($menu.isSelected() == true) class="active"#end><a href="$!utils.escapeXML($menu.MaximizeLink)">$menu.Title</a></li>
+				#end
 			#end
 			</ul>
 		</div>
