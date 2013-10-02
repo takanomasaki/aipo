@@ -22,6 +22,8 @@ package com.aimluck.eip.util;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.apache.jetspeed.services.logging.JetspeedLogFactoryService;
 import org.apache.jetspeed.services.logging.JetspeedLogger;
 import org.apache.jetspeed.services.rundata.JetspeedRunData;
@@ -29,6 +31,9 @@ import org.apache.jetspeed.services.rundata.JetspeedRunDataService;
 import org.apache.turbine.services.TurbineServices;
 import org.apache.turbine.services.rundata.RunDataService;
 import org.apache.turbine.util.RunData;
+import org.apache.velocity.context.Context;
+
+import com.aimluck.eip.portal.controls.ALVelocityPortletControl.PortletTab;
 
 /**
  * Aimluck Session のユーティリティクラスです。 <br />
@@ -108,4 +113,14 @@ public class ALSessionUtils {
     return null;
   }
 
+  @SuppressWarnings("unchecked")
+  public static void refleshMenusSession(RunData data, Context context) {
+    HttpSession session = data.getSession();
+    List<PortletTab> accountMenus =
+      (List<PortletTab>) session.getAttribute("accountMenus");
+    List<PortletTab> systemMenus =
+      (List<PortletTab>) session.getAttribute("systemMenus");
+    context.put("accountMenus", accountMenus);
+    context.put("systemMenus", systemMenus);
+  }
 }

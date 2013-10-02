@@ -33,6 +33,7 @@ import com.aimluck.eip.common.ALEipConstants;
 import com.aimluck.eip.services.orgutils.ALOrgUtilsService;
 import com.aimluck.eip.util.ALCommonUtils;
 import com.aimluck.eip.util.ALEipUtils;
+import com.aimluck.eip.util.ALSessionUtils;
 
 /**
  * Velocity Portlet を扱う際の抽象クラスです。 <br />
@@ -153,7 +154,7 @@ public abstract class ALSecureBaseAction extends SecureVelocityPortletAction
       context,
       ALEipConstants.ENTITY_ID));
     context.put("utils", new ALCommonUtils());
-
+    ALSessionUtils.refleshMenusSession(rundata, context);
     Map<String, String> attribute = ALOrgUtilsService.getParameters();
     for (Map.Entry<String, String> e : attribute.entrySet()) {
       context.put(e.getKey(), e.getValue());

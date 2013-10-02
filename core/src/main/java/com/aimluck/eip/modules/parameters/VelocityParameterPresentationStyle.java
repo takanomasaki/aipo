@@ -20,10 +20,7 @@
 package com.aimluck.eip.modules.parameters;
 
 // Turbine support
-import java.util.List;
 import java.util.Map;
-
-import javax.servlet.http.HttpSession;
 
 import org.apache.jetspeed.modules.parameters.ParameterPresentationStyle;
 import org.apache.jetspeed.services.TemplateLocator;
@@ -35,8 +32,8 @@ import org.apache.turbine.services.velocity.TurbineVelocity;
 import org.apache.turbine.util.RunData;
 import org.apache.velocity.context.Context;
 
-import com.aimluck.eip.portal.controls.ALVelocityPortletControl.PortletTab;
 import com.aimluck.eip.util.ALCommonUtils;
+import com.aimluck.eip.util.ALSessionUtils;
 
 /**
  * Generic Velocity-based presentation style. The following default objects are
@@ -114,15 +111,7 @@ public class VelocityParameterPresentationStyle extends
     context.put("jslink", new BaseJetspeedLink(data));
     context.put("utils", new ALCommonUtils());
 
-    {
-      HttpSession session = data.getSession();
-      List<PortletTab> accountMenus =
-        (List<PortletTab>) session.getAttribute("accountMenus");
-      List<PortletTab> systemMenus =
-        (List<PortletTab>) session.getAttribute("systemMenus");
-      context.put("accountMenus", accountMenus);
-      context.put("systemMenus", systemMenus);
-    }
+    ALSessionUtils.refleshMenusSession(data, context);
 
     try {
       // Add custom objects to the context

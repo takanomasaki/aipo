@@ -191,7 +191,7 @@ public class ALSessionValidator extends JetspeedSessionValidator {
     }
     // for preventing XSS on user name
     context.put("utils", new ALCommonUtils());
-
+    ALSessionUtils.refleshMenusSession(data, context);
     context.put("l10n", ALLocalizationUtils.createLocalization(data));
 
     // Cookie無効エラーを検知している場合、ログインさせない
