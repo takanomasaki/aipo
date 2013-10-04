@@ -26,6 +26,7 @@
 #set($dlLink = $!utils.escapeXML($!jslink.getPortletById($!portlet.ID).addQueryData('template','AccountPersonFormScreen')) )
 <a class="auiButton" title="$l10n.ACCOUNT_DO_EDIT_ACCOUNT" href="javascript:void(0);" onclick="aipo.common.showDialog('$dlLink','$!portlet.ID','aipo.account_person.onLoadPersonInfoDialog');">$l10n.ACCOUNT_DO_EDIT_ACCOUNT</a>
 </div>
+<h2>$!portlet.Title</h2>
 </div>
 
 #ALajaxlistformheader($l10n.ACCOUNT_USER)

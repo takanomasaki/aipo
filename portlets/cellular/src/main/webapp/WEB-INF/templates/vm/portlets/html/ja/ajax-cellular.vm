@@ -22,6 +22,7 @@
 #set ($indicator_id = "indicator-dlg-")
 ## ---------------------------------------------------------------------------
 #AUIcontentsAreaHeader()
+#ALSystemTitle($!portlet.Title)
 #ALerrmsg($errmsgs)
 #ALajaxIndicator("${indicator_id}" "$!portlet.ID" "")
 #if($finishedSendmail)

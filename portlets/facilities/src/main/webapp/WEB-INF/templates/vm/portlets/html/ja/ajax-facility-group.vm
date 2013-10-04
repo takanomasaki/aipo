@@ -22,6 +22,7 @@
 #set ($addFacilityGroup = $!utils.escapeXML($!jslink.getPortletById($!portlet.ID).addQueryData("template","FacilityGroupFormScreen").addQueryData("entityid","new")))
 ## ---------------------------------------------------------------------------
 #AUIcontentsAreaHeader()
+#ALSystemTitle($!portlet.Title)
 #AUISummaryDiv()
 #if($result.List.size() != 0)
 <div class="floatLeft">

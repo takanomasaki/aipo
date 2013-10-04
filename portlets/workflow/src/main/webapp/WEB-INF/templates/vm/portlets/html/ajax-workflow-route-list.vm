@@ -26,6 +26,7 @@
 #set ($newAfterFunction2 = "aipo.workflow_route.onLoadWorkflowRouteDialog")
 ## ---------------------------------------------------------------------------
 #AUIcontentsAreaHeader()
+#ALSystemTitle($!portlet.Title)
 #AUISummaryDiv()
 #if($result.List.size() > 0)
 <div class="floatLeft">

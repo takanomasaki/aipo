@@ -25,6 +25,7 @@
 #set ($newAfterFunction2 = "aipo.workflow_route.onLoadWorkflowRouteDialog")
 ## ---------------------------------------------------------------------------
 #AUIcontentsAreaHeader()
+#ALSystemTitle($!portlet.Title)
 #AUISummaryDiv()
 <div class="floatLeft">
 #AUIbuttonAction("$l10n.WORKFLOW_DO_ADD_CLASSIFICATION" "javascript:aipo.common.showDialog('$newUrl1','$!portlet.ID',$newAfterFunction1);")

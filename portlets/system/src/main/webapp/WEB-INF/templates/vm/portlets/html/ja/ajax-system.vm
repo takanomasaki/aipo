@@ -37,6 +37,7 @@
 #end
 #AUIconfigitem($l10n.SYSTEM_DO_CHANGE_ADMINPASS $linkAdminpassword)
 #AUIconfigfooter()
+<h2>$!portlet.Title</h2>
 #AUISummaryDivfooter()
 
 #if((!$config.getString("aipo.asp")) || ($config.getString("aipo.asp") != "true"))

@@ -615,7 +615,7 @@ $item.get(0)
 	<div id="roundWrapper">
 		<div id="mobileHeader_v2" class="clearfix">
 		<div class="inner">
-		<h1><span>#if($!portlet.Title != "")$!portlet.Title #else $title #end</span></h1>
+		<h1><span>#if($!portlet.Title != "")#ALPortletHeadTitle($!portlet.Title)#else $title #end</span></h1>
 		<div class="mhLeft">
 			<a href="javascript:void(0)" class="auiMbBtnNavi" onClick="appsNaviSwitch()">
 				<i class="icon-reorder"></i>
@@ -636,7 +636,8 @@ $item.get(0)
 	<!-- /Smartphone Header -->
 	#end
 	<div class="auiPortletHead"><div class="inner">
-		<div class="auiPortletTitle">#if($!portlet.Title != "")$!portlet.Title #else $title #end</div>
+		<div class="auiPortletTitle">
+			#if($!portlet.Title != "")#ALPortletHeadTitle($!portlet.Title)#else$title #end</div>
 		<div class="auiPortletTool">
 		</div>
 	</div></div>
@@ -644,7 +645,33 @@ $item.get(0)
 	<div class="auiPortletBody"><div class="inner">
 				<div dojoType="aimluck:Contentpane" widgetId="widget_$!portlet.ID" id="portlet_$!portlet.ID">
 #end
+#macro(ALPortletHeadTitle $title)
+#set($system= false)
+#set($account=false)
+#foreach($menu in $systemMenus)
+				 #if($menu.Title.toString()==$title)
+				 	#set($system= true)
+ 				#end
+ 				#end
+				#foreach($menu in $accountMenus)
+				 #if($menu.Title.toString()==$title)
+				 	#set($account= true)
+ 				#end
+				#end
+		     #if($system)
+                 $l10n.TOP_MANAGE_SETTING
+     	    #elseif($account)
+               $l10n.SYSTEM_PERSONAL
+     		 #else
+				 $title
+			 #end
+#end
+#macro(ALSystemTitle $title)
+	<div class="auiSummaryMeta">
+						<h2>$title</h2>
+</div>
 
+#end
 #macro(ALPersonalPreferenceWidget)
 	#ALPreferenceWidgetAbstract($accountMenus)
 #end

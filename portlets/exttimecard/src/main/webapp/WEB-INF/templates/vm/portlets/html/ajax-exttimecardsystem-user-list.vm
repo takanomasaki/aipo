@@ -20,6 +20,7 @@
 #set ($indicator_id = "indicator-list-")
 ## ---------------------------------------------------------------------------
 #AUIcontentsAreaHeader()
+#ALSystemTitle($!portlet.Title)
 #AUISummaryDiv()
 <form class="auiForm floatLeft" action="#" method="post" style="margin-right:1em;" onsubmit="return false;">
 <select onchange="aipo.viewPage(this.options[this.selectedIndex].value, '$!portlet.ID')" style="width:180px;">
@@ -104,3 +105,4 @@ $l10n.EXTTIMECARD_CHANGE_SYSTEMNAME
 #ALformfooter()
 #end
 #AUIcontentsAreaFooter()
+#ALSystemPreferenceWidget()

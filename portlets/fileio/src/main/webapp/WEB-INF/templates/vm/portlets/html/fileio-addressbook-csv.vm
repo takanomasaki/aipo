@@ -109,6 +109,7 @@ function hide_Attention(){
 ##ALtabheader($tabs "")
 #ALcontentheader($!portlet.Title '')
 #AUIcontentsAreaHeader()
+#ALSystemTitle($!portlet.Title)
 #if((! $result.List || $result.List.size() == 0) && !$!validateError)#ALerrmsg($errmsgs)#end
 #if($result.getClass().getName() == "com.aimluck.eip.account.AccountCsvSelectData")
 #if(! $result.List || $result.List.size() <= 0)

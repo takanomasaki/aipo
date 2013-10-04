@@ -22,7 +22,8 @@
 #set ($indicator_id = "indicator-list-")
 #set ($addRole = $!utils.escapeXML($!jslink.getPortletById($!portlet.ID).addQueryData("template","AccessControlFormScreen").addQueryData("entityid","new")))
 ## ---------------------------------------------------------------------------
-#AUIContentsAreaHeader()
+#AUIcontentsAreaHeader()
+#ALSystemTitle($!portlet.Title)
 #AUISummaryDiv()
 #AUIbuttonAction("$l10n.ACCESSCTL_ROLE_ADD" "javascript:aipo.common.showDialog('$addRole','$!portlet.ID',aipo.accessctl.onLoadAccessctlDialog);")
 #AUISummaryDivfooter()

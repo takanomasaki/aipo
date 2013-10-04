@@ -23,7 +23,7 @@
 #set ($linkPsml = $!jslink.getPortletById($!portlet.ID).addQueryData('template','GadgetsPsmlFormScreen'))
 ## ---------------------------------------------------------------------------
 #AUIcontentsAreaHeader()
-
+#ALSystemTitle($!portlet.Title)
 #AUISummaryDiv()
 <div class="floatLeft">
 #AUIbuttonAction($l10n.GADGETS_DO_ADD_APP "javascript:aipo.common.showDialog('$addApp','$!portlet.ID',aipo.gadgets_admin.onLoadFormDialog);")

@@ -22,6 +22,7 @@
 ## ---------------------------------------------------------------------------
 
 #AUIcontentsAreaHeader()
+#ALSystemTitle($!portlet.Title)
 #if($result.List.size() == 0)
 #AUIbuttonActionInBlankBox("グループを追加する" "javascript:aipo.common.showDialog('$!jslink.getPortletById($!portlet.ID).addQueryData('template','MyGroupFormScreen').addQueryData('entityid','new')','$!portlet.ID',aipo.mygroup.onLoadMygroupDialog);")
 #else
@@ -69,5 +70,5 @@
 #ALformfooter()
 
 #end
-
 #AUIcontentsAreaFooter()
+#ALPersonalPreferenceWidget()

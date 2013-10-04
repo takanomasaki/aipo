@@ -23,6 +23,7 @@
 #set ($orderFacility = $!jslink.getPortletById($!portlet.ID).addQueryData("template","FacilityChangeTurnFormScreen"))
 ## ---------------------------------------------------------------------------
 #AUIcontentsAreaHeader()
+#ALSystemTitle($!portlet.Title)
 #AUISummaryDiv()
 #if($result.getAllFacilitySum() != 0)
 <div class="floatLeft">
