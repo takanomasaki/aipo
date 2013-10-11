@@ -76,8 +76,8 @@ $l10n.ADDRESSBOOK_NO_ADDRESS_YOUR_SELECT<br />
 </tr>
 #foreach ($record in $result.List)
 <tr>
-#ALtdcellAtt("<input name='check$!record.AddressId' type='checkbox' value='$!record.AddressId' />" 'align="center"')
-#ALtdcellheader()
+#ALtdcellAtt("<input name='check$!record.AddressId' type='checkbox' value='$!record.AddressId' />" 'class="auiMTCheck" align="center"')
+#ALtdcellheaderAtt('class="auiMTCaption"')
 <div><a href="javascript:void(0);" onclick="aipo.common.showDialog('$!utils.escapeXML($!jslink.getPortletById($!portlet.ID).addQueryData("template","AddressBookDetailScreen").addQueryData("entityid",$record.AddressId))');">$!record.Name</a></div>
 #if($!record.PublicFlag.toString() == 'F')
 <img src="images/addressbook/addressbook_secret.gif" border="0" width="16" height="16" align="absmiddle" alt="$l10n.ADDRESSBOOK_CLOSE_PUBLIC" title="$l10n.ADDRESSBOOK_CLOSE_PUBLIC" />
