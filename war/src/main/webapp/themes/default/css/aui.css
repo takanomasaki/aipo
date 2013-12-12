@@ -3453,6 +3453,40 @@ ul.attachments {
 }
 
 /***************************************************
+	presence
+--------------------------------------------------*/
+.presenceFields {
+  position: relative;
+}
+.presenceFields .floatLeft {
+  width: 100%;
+  padding-right: 90px;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+.presenceFields .floatLeft input[type=text], .presenceFields .floatLeft select {
+  width: 100%;
+}
+.presenceFields .floatRight {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+.presenceFields .floatRight input[type=submit], .presenceFields .floatRight input[type=button], .presenceFields .floatRight input[type=button], .presenceFields .floatRight a[class^=auiButton] {
+  width: 38px;
+  padding-right: 0;
+  padding-left: 0;
+}
+
+.presenceTable .on [class^=icon-] {
+  color: #d2d2d2;
+}
+.presenceTable .off {
+  color: #999999;
+}
+
+/***************************************************
 	auiIcon
 --------------------------------------------------*/
 .auiIcon {
