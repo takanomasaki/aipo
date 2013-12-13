@@ -3457,6 +3457,7 @@ ul.attachments {
 --------------------------------------------------*/
 .presenceFields {
   position: relative;
+  max-width: 370px;
 }
 .presenceFields .floatLeft {
   width: 100%;
@@ -3477,6 +3478,10 @@ ul.attachments {
   width: 38px;
   padding-right: 0;
   padding-left: 0;
+}
+
+.container .presenceFields {
+  max-width: 100%;
 }
 
 .presenceTable .on [class^=icon-] {
