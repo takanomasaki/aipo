@@ -2164,12 +2164,11 @@ public class ALEipUtils {
   }
 
   public static boolean isAndroid2Browser(RunData rundata) {
-    boolean[] version = getAndroidVersion(rundata);
-    return version != null
-      && version[0] == Boolean.parseBoolean(String.valueOf(2));
+    int[] version = getAndroidVersion(rundata);
+    return version != null && version[0] == 2;
   }
 
-  public static boolean[] getAndroidVersion(RunData rundata) {
+  public static int[] getAndroidVersion(RunData rundata) {
     final String userAgent = rundata.getUserAgent().trim();
     if (userAgent == null || "".equals(userAgent)) {
       return null;
@@ -2180,10 +2179,10 @@ public class ALEipUtils {
         Pattern.CASE_INSENSITIVE);
     Matcher matcher = androidVersion.matcher(userAgent);
     if (matcher.find()) {
-      return new boolean[] {
-        Boolean.parseBoolean(matcher.group(1)),
-        Boolean.parseBoolean(matcher.group(2)),
-        Boolean.parseBoolean(matcher.group(3)) };
+      return new int[] {
+        Integer.parseInt(matcher.group(1)),
+        Integer.parseInt(matcher.group(2)),
+        Integer.parseInt(matcher.group(3)) };
     } else {
       return null;
     }
