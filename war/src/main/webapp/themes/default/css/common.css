@@ -2914,6 +2914,17 @@ ul.blockList li a.selected {
 .colorFacebook {color: #4862a3 !important;}
 
 /***************************************************
+    placeholder
+--------------------------------------------------*/
+.placeholder {
+  position: absolute;
+  line-height: 32px;
+  padding-left: 4px;
+  color: #999999;
+  cursor: text;
+}
+
+/***************************************************
 	mobile class
 --------------------------------------------------*/
 .pc_hide {display:none !important;}
