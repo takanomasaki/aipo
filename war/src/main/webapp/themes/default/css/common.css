@@ -551,7 +551,6 @@ td.item {
   white-space: nowrap;
 }
 .listTable td > div {
-  width: 100%;
   overflow: hidden;
 }
 .listTable caption {
