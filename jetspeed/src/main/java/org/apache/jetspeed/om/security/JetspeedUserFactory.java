@@ -72,8 +72,16 @@ public class JetspeedUserFactory {
         ((BaseJetspeedUser) user).setNew(isNew);
       }
     } catch (Exception e) {
+      if (userClassName != null) {
+        throw new UserException(
+          "Failed instantiate an User implementation object: "
+            + e.toString()
+            + "userClassName:"
+            + userClassName);
+      }
       throw new UserException(
         "Failed instantiate an User implementation object: " + e.toString());
+
     }
 
     return user;
