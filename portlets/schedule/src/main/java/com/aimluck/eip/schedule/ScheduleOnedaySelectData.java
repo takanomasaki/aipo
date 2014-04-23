@@ -175,42 +175,27 @@ public class ScheduleOnedaySelectData extends AjaxScheduleMonthlySelectData {
     to.set(Calendar.MINUTE, 0);
     today.setValue(to.getTime());
     // 表示開始時間の設定
-    String startHourInit;
-    try {
-      startHourInit =
-        ALEipUtils
-          .getPortlet(rundata, context)
-          .getPortletConfig()
-          .getInitParameter("p1a-rows");
-    } catch (NullPointerException e) {
-      startHourInit = null;
-    }
+    String startHourInit =
+      ALEipUtils
+        .getPortlet(rundata, context)
+        .getPortletConfig()
+        .getInitParameter("p1a-rows");
     startHour = startHourInit != null ? Integer.parseInt(startHourInit) : 0;
     startHour = startHour > 24 ? 0 : startHour;
     // 表示終了時間の設定
-    String endHourInit;
-    try {
-      endHourInit =
-        ALEipUtils
-          .getPortlet(rundata, context)
-          .getPortletConfig()
-          .getInitParameter("p1b-rows");
-    } catch (NullPointerException e) {
-      endHourInit = null;
-    }
+    String endHourInit =
+      ALEipUtils
+        .getPortlet(rundata, context)
+        .getPortletConfig()
+        .getInitParameter("p1b-rows");
     endHour = endHourInit != null ? Integer.parseInt(endHourInit) : 13;
     endHour = endHour > 24 ? 13 : endHour;
     // ToDo 表示設定
-    String todoInit;
-    try {
-      todoInit =
-        ALEipUtils
-          .getPortlet(rundata, context)
-          .getPortletConfig()
-          .getInitParameter("p5a-view");
-    } catch (NullPointerException e) {
-      todoInit = null;
-    }
+    String todoInit =
+      ALEipUtils
+        .getPortlet(rundata, context)
+        .getPortletConfig()
+        .getInitParameter("p5a-view");
     viewToDo =
       (!ALPortalApplicationService.isActive(ToDoUtils.TODO_PORTLET_NAME) || todoInit == null)
         ? 0
